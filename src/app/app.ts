@@ -1,11 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './app.html',
   standalone: true,
   styleUrl: './app.css'
@@ -19,7 +19,7 @@ export class App implements OnInit {
   idVideo!: number;
   missatge: string = '';
 
-  constructor(private http: HttpClient) {}
+
 
   ngOnInit(): void {
     this.socket = io('http://localhost:3000', { transports: ['websocket'] });
