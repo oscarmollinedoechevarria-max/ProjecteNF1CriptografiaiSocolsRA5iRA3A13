@@ -1,16 +1,11 @@
-
 <main class="main">
-<h1>visualitzador videos</h1>
+  <h1>Visualitzador de vídeos</h1>
 
-<button>demanar codi</button>
+  <button (click)="demanarVideo()">Demanar vídeo</button>
 
-  @for(video of this.videos; track video){
-    <a>{{video}}fdd</a>
-  }
-<!--  @if (){-->
-<!--    -->
-<!--  } -->
+  <div *ngIf="videoUrl">
+    <p><strong>Codi assignat:</strong> {{codigo}}</p>
+    <video *ngIf="videoUrl" width="480" height="270" controls [src]="videoUrl"></video>
+    <p>{{missatge}}</p>
+  </div>
 </main>
-
-
-<router-outlet />

@@ -1,39 +1,52 @@
-import {Component, OnInit, signal} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, signal } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './app.html',
   standalone: true,
   styleUrl: './app.css'
 })
 export class App implements OnInit {
-  protected readonly title = signal('ProjecteNF1CriptografiaiSocolsRA5iRA3A13')
+  protected readonly title = signal('ProjecteNF1CriptografiaiSocolsRA5iRA3A13');
   private socket!: Socket;
   videos: string[] = [];
+  videoUrl: string | null = null;
+  codigo: string | null = null;
+  idVideo!: number;
   missatge: string = '';
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-
-    this.socket = io('http://localhost:3000', {
-      transports: ['websocket'] });
-
+  ngOnInit(): void {
+    this.socket = io('http://localhost:3000', { transports: ['websocket'] });
 
     this.socket.on('connect', () => {
-      console.log('connectat:', this.socket.id);
-
       this.socket.emit('registerPlatform', 'PC');
-
       this.socket.emit('llistaVideos');
     });
 
     this.socket.on('videos', (data: string[]) => {
-      console.log('videos:', data);
       this.videos = data;
     });
+
+    this.socket.on('videoAsignado', (data: any) => {
+      this.videoUrl = 'http://localhost:3000' + data.url;
+      this.codigo = data.codigo;
+      this.idVideo = data.id;
+    });
+
+    this.socket.on('permisoVideo', (data: any) => {
+      if (data.id === this.idVideo) {
+        this.missatge = 'Permís concedit, pots reproduir el vídeo';
+      }
+    });
+  }
+
+  demanarVideo() {
+    this.socket.emit('pedirVideo');
   }
 }
