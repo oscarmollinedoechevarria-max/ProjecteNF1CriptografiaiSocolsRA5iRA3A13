@@ -17,15 +17,23 @@ export class App implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.socket = io('http://localhost:3000', {
-      transports: ['websocket'],
+      transports: ['websocket'] });
+
+
+    this.socket.on('connect', () => {
+      console.log('connectat:', this.socket.id);
+
+      this.socket.emit('registerPlatform', 'PC');
+
+      this.socket.emit('llistaVideos');
     });
 
-    this.socket.on('connectionPC', (data: string[]) => {
-      console.log('Datos recibidos:', data)
-      this.videos = data
+    this.socket.on('videos', (data: string[]) => {
+      console.log('videos:', data);
+      this.videos = data;
     });
   }
 }
