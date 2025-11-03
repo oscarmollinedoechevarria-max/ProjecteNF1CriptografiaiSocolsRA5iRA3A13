@@ -34,13 +34,15 @@ export class App implements OnInit {
     });
 
     this.socket.on('videoAsignado', (data: any) => {
-      this.videoUrl = 'http://localhost:3000' + data.url;
+      this.videoUrl = null;
       this.codigo = data.codigo;
       this.idVideo = data.id;
+      this.missatge = 'Codi assignat: ' + data.codigo + '. Introdueix-lo a A2 per obtenir permís.';
     });
 
     this.socket.on('permisoVideo', (data: any) => {
       if (data.id === this.idVideo) {
+        this.videoUrl = 'http://localhost:3000/videos/' + data.nombre_archivo;
         this.missatge = 'Permís concedit, pots reproduir el vídeo';
       }
     });

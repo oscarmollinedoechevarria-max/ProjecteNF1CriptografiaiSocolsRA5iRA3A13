@@ -2,10 +2,12 @@
   <h1>Visualitzador de vídeos</h1>
 
   <button (click)="demanarVideo()">Demanar vídeo</button>
+  <div *ngIf="codigo">
+    <p><strong>{{missatge}}</strong></p>
+  </div>
 
   <div *ngIf="videoUrl">
     <p><strong>Codi assignat:</strong> {{codigo}}</p>
     <video *ngIf="videoUrl" width="480" height="270" controls [src]="videoUrl"></video>
-    <p>{{missatge}}</p>
   </div>
 </main>
