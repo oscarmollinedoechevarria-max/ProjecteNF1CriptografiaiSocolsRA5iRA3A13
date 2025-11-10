@@ -51,6 +51,7 @@ export class App implements OnInit {
   }
 
   demanarVideo() {
-    this.socket.emit('pedirVideo');
+    if (!this.videoSelecionat) return;
+    this.socket.emit('pedirVideo', { nombre_archivo: this.videoSelecionat });
   }
 }
