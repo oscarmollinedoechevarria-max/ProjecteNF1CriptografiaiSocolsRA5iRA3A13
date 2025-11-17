@@ -8,10 +8,10 @@
       <option [value]="item">{{ item }}</option>
     }
   </select>
-    <div *ngIf="videoSelecionat">
+    <div *ngIf="videoSelecionat" class="seleccionar-video">
       <p>Has seleccionat: {{ videoSelecionat }}</p>
       <button (click)="demanarVideo()">Demanar vídeo</button>
-      <div *ngIf="codigo">
+      <div *ngIf="codigo" class="seleccionar-video">
         <p><strong>{{missatge}}</strong></p>
       </div>
     </div>
