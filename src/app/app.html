@@ -1,24 +1,21 @@
-<main class="main">
-  <h1>Visualitzador de vídeos</h1>
 
+<main>
   <div>
-  <select name="opcion" [(ngModel)]="videoSelecionat">
-    <option value="">Selecciona un video</option>
-    @for (item of videos; track $index) {
-      <option [value]="item">{{ item }}</option>
-    }
-  </select>
-    <div *ngIf="videoSelecionat" class="seleccionar-video">
-      <p>Has seleccionat: {{ videoSelecionat }}</p>
-      <button (click)="demanarVideo()">Demanar vídeo</button>
-      <div *ngIf="codigo" class="seleccionar-video">
-        <p><strong>{{missatge}}</strong></p>
-      </div>
-    </div>
-  </div>
 
-  <div *ngIf="videoUrl">
-    <p><strong>Codi assignat:</strong> {{codigo}}</p>
-    <video *ngIf="videoUrl" width="480" height="270" controls [src]="videoUrl"></video>
+    <h1>Login</h1>
+
+    <div>
+      <h2>usuari</h2>
+      <input type="text">
+    </div>
+
+    <hr>
+
+    <div>
+      <h2>contrasenya</h2>
+      <input type="text">
+    </div>
+
+    <button>login</button>
   </div>
 </main>
