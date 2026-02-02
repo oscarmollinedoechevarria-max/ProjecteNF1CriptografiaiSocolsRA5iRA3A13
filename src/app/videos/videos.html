@@ -1,0 +1,35 @@
+<div class="videos-container">
+  <ng-container *ngIf="token; else loginAvis">
+    <main class="main">
+      <h1>Visualitzador de vídeos</h1>
+
+      <div>
+        <select name="opcion" [(ngModel)]="videoSelecionat">
+          <option value="">Selecciona un video</option>
+          <option *ngFor="let item of videos" [value]="item">{{ item }}</option>
+        </select>
+
+        <div *ngIf="videoSelecionat" class="seleccionar-video">
+          <p>Has seleccionat: {{ videoSelecionat }}</p>
+          <button (click)="demanarVideo()">Demanar vídeo</button>
+
+          <div *ngIf="codigo" class="seleccionar-video">
+            <p><strong>{{ missatge }}</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="videoUrl" class="video-player">
+        <p><strong>Codi assignat:</strong> {{ codigo }}</p>
+        <video width="480" height="270" controls [src]="videoUrl"></video>
+      </div>
+    </main>
+  </ng-container>
+
+  <ng-template #loginAvis>
+    <div class="login-aviso">
+      <p class="avis-text">Has d’iniciar sessió per veure els vídeos.</p>
+      <a routerLink="/" class="login-button">Anar a login</a>
+    </div>
+  </ng-template>
+</div>

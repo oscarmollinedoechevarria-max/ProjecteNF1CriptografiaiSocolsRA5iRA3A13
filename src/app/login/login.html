@@ -1,0 +1,8 @@
+<div class="login">
+  <input type="text" [(ngModel)]="usuari" placeholder="Usuari">
+  <input type="password" [(ngModel)]="contrasenya" placeholder="Contrasenya">
+
+  <button (click)="login()">Entrar</button>
+
+  <p *ngIf="loginError" style="color:red">{{ loginError }}</p>
+</div>
