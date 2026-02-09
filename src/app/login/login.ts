@@ -33,6 +33,7 @@ export class Login implements OnInit{
       next: (res) => {
         this.token = res.token;
         localStorage.setItem('token', res.token);
+        localStorage.setItem('rol', res.rol);
         this.loginError = '';
         this.router.navigate(['/videos']);
       },

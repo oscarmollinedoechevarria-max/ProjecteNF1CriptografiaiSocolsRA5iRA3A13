@@ -6,7 +6,7 @@
       <div>
         <select name="opcion" [(ngModel)]="videoSelecionat">
           <option value="">Selecciona un video</option>
-          <option *ngFor="let item of videos" [value]="item">{{ item }}</option>
+          <option *ngFor="let item of videos" [value]="item.nombre_archivo">{{ item.nombre_archivo }}</option>
         </select>
 
         <div *ngIf="videoSelecionat" class="seleccionar-video">
