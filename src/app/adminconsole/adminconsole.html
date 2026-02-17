@@ -1,0 +1,27 @@
+<div class="admin">
+
+  <div class="login">
+    <div class="backgroundDiv">
+      <h2>Stats</h2>
+      <p>RAM: {{ stats.ram_used }} / {{ stats.ram_total }}</p>
+      <p>CPU: {{ stats.cpu?.join(', ') }}</p>
+    </div>
+
+    <div class="backgroundDiv">
+      <h2>Queixes usuaris</h2>
+      <button (click)="fetchFiles()">Actualitzar</button>
+
+      @for (file of files; track file.name) {
+        <div class="backgroundReport">
+          <h3 (click)="seleccionarFitxer(file)" style="cursor:pointer">
+            {{ file.name }} — {{ file.size }}b
+          </h3>
+
+          @if (fileSeleccionat?.name === file.name) {
+            <h4>{{ file.contingut }}</h4>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

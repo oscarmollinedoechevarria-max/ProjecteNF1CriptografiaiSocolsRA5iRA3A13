@@ -10,9 +10,10 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule,FormsModule,HttpClientModule,RouterModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
+  standalone: true
 })
 export class Login implements OnInit{
 
@@ -35,7 +36,12 @@ export class Login implements OnInit{
         localStorage.setItem('token', res.token);
         localStorage.setItem('rol', res.rol);
         this.loginError = '';
-        this.router.navigate(['/videos']);
+        if(res.rol == 'admin'){
+          this.router.navigate(['/admin']);
+        }
+        else {
+          this.router.navigate(['/videos']);
+        }
       },
       error: (err) => {
         this.loginError = err.error?.error || 'Error de login';
