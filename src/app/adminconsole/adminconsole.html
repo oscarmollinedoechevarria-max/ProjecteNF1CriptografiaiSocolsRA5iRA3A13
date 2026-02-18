@@ -11,14 +11,18 @@
       <h2>Queixes usuaris</h2>
       <button (click)="fetchFiles()">Actualitzar</button>
 
+      <br>
+
       @for (file of files; track file.name) {
         <div class="backgroundReport">
-          <h3 (click)="seleccionarFitxer(file)" style="cursor:pointer">
+          <h5 (click)="seleccionarFitxer(file)" style="cursor:pointer">
             {{ file.name }} — {{ file.size }}b
-          </h3>
+          </h5>
 
           @if (fileSeleccionat?.name === file.name) {
-            <h4>{{ file.contingut }}</h4>
+            <div id="fileContent">
+              <p>{{ file.contingut }}</p>
+            </div>
           }
         </div>
       }
