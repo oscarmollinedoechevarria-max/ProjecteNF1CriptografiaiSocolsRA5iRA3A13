@@ -63,3 +63,42 @@
   background-color: #7e5b3f;
   color: #b8b8b8;
 }
+
+.login-aviso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem 10rem;
+}
+
+
+.avis-text {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.errorcontainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  background: linear-gradient(135deg, #ffae00, #ff8800);
+}
+
+.login-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: white;
+  color: #ff8800;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}

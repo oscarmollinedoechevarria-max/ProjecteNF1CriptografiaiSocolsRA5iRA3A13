@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-adminconsole',
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, RouterLink],
   templateUrl: './adminconsole.html',
   styleUrl: './adminconsole.css',
   standalone: true
@@ -14,6 +14,7 @@ export class Adminconsole implements OnInit {
   stats: any = {};
   files: any[] = [];
   fileSeleccionat: any = null;
+  rol: any = null;
 
   private intervalStats: any;
   private intervalFiles: any;
@@ -21,6 +22,7 @@ export class Adminconsole implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
+    this.rol = localStorage.getItem('rol');
     this.fetchStats();
     this.fetchFiles();
 

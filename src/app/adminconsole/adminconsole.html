@@ -1,5 +1,7 @@
 <div class="admin">
 
+  @if(this.rol == 'admin' && this.rol != null){
+
   <div class="login">
     <div class="backgroundDiv">
       <h2>Stats</h2>
@@ -28,4 +30,13 @@
       }
     </div>
   </div>
+    }
+  @else {
+    <div class="errorcontainer">
+      <div class="login-aviso">
+        <p class="avis-text">Has de ser admin per veure aquesta pagina.</p>
+        <a routerLink="/" class="login-button">Anar a login</a>
+      </div>
+    </div>
+  }
 </div>
